@@ -1,0 +1,377 @@
+/* Global settings*/
+:root {
+	/* Color */
+	--color-white: #ffffff;
+	--color-light-white: #ffffff;
+	--color-dark-white: #bdbdbd;
+	--color-light-grey: #cecbc3;
+	--color-dark-orange: #c76203;
+	--color-black: #4d4d4d;
+	--color-dark-grey: #4d4d4d;
+	--color-grey: #d4d1d1;
+	--color-blue: #73aace;
+	--color-yellow: #fff7d1;
+	--color-black: #000000;
+	--font-white: rgba(240, 245, 245);
+
+	/* Font size */
+	--font-large: 48px;
+	--font-medium: 28px;
+	--font-regular: 18px;
+	--font-small: 16px;
+	--font-micro: 14px;
+
+	/* Font weight */
+	--weight-bold: 700;
+	--weight-semi-bold: 600;
+	--weight-regular: 400;
+
+	/* Size */
+	--size-border-radius: 4px;
+
+	/* Annimation */
+	--animation-duration: 300ms;
+}
+
+/* Universal tags */
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+/* body태그에 font-family 적용 */
+body {
+	font-family: "Gothic A1", sans-serif;
+	font-family: "Jua", sans-serif;
+	font-family: "Sunflower", sans-serif;
+	margin: 0px;
+	cursor: default;
+}
+a {
+	text-decoration: none;
+	color: var(--color-white);
+	font-size: 52px;
+	line-height: 60px;
+	margin-left: 14px;
+}
+.navbar__logo img {
+	width: 60px;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+#navbar {
+	position: fixed;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	z-index: 51;
+	display: flex;
+
+	justify-content: space-between;
+	padding: 10x;
+	align-items: center;
+	color: var(--color-white);
+	background-color: var(--color-grey);
+	transition: var(--animation-duration) ease-in-out;
+}
+
+#navbar.navbar--dark {
+	background-color: rgb(243, 222, 222);
+	padding: 5px;
+	opacity: 50%;
+}
+
+.navbar__toggle__btn {
+	width: 55px;
+	height: 55px;
+}
+.navbar__menu {
+	display: flex;
+}
+div.navbar__logo {
+	display: flex;
+	height: 60px;
+	margin: auto 0;
+}
+.navbar__logo img {
+	width: 60px;
+}
+.navbar__logo a {
+	font-size: 67px;
+	line-height: 67px;
+}
+button.navbar__toggle-btn {
+	margin-left: 20px;
+	margin: auto;
+	width: 50px;
+	height: 60px;
+	border: 3px solid white;
+}
+
+.logout{
+	margin:10px;
+}
+.navbar__menu__item {
+	display: flex;
+	padding: 4px 8px;
+	margin: 0 6px;
+	font-size: 30px;
+	border-radius: var(--size-border-radius);
+	cursor: pointer;
+	line-height: 60px;
+}
+
+.navbar__menu__item a {
+	align-items: center;
+	margin: auto;
+	font-size: 30px;
+}
+/* #navbar(부모)요소에 display:flex지정
+div 컨테이너들이 좌우 한줄 정렬 */
+.navbar__menu__item.active {
+	border: 3px solid var(--color-white);
+}
+.navbar__menu__item:hover {
+	background-color: var(--color-dark-orange);
+}
+#home {
+	margin-top: 150px;
+	background-color: #ffffff;
+	text-align: center;
+	color: var(--color-black);
+	font-size: var(--font-regular);
+}
+
+/*  장소추천 */
+/*
+#places {
+	margin: 130px 50px 50px 50px;
+}
+
+#places button {
+	border-radius: 50%;
+	font-size: 30px;
+	background-color: white;
+	border: none;
+}
+.place__container__h1 {
+	font-size: 20px;
+}
+.place__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 320px;
+}
+.place__container div.place__picture__body {
+	flex-basis: 20%;
+	height: 300px;
+	border: 5px solid black;
+	text-align: center;
+	margin: 20px;
+	border-radius: 10px;
+}
+*/
+
+/* ---------추가코드-----------------------------------*/
+.place__container__h1 {
+	display: flex;
+	justify-content: center;
+}
+
+span.place__container__h1 h1 {
+	font-size: 35px;
+	color: rgb(0, 0, 0);
+	margin-top: 60px;
+}
+
+li {
+	list-style-type: none;
+}
+
+ul.slides li h1 {
+	display: flex;
+	justify-content: center;
+}
+
+/* 보여줄 구간의 높이와 넓이 설정 */
+#slideShow {
+	width: 500px;
+	height: 400px;
+	position: relative;
+	margin: 50px auto;
+	overflow: hidden;
+	/*리스트 형식으로 이미지를 일렬로 
+  정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
+  hidden으로 숨겨줘야됨*/
+}
+
+.slides {
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	/*width: 1000px; */ /* 슬라이드할 사진과 마진 총 넓이 */
+	transition: left 0.5s ease-out;
+	/*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+}
+
+/* 첫 번째 슬라이드 가운데에 정렬하기위해
+첫번째 슬라이드만 margin-left조정 */
+.slides li:first-child {
+	margin-left: 100px;
+}
+
+/* 슬라이드들 옆으로 정렬 */
+.slides li:not(:last-child) {
+	float: left;
+	margin-right: 100px;
+}
+
+.slides li {
+	float: left;
+}
+
+.controller span {
+	position: absolute;
+	background-color: transparent;
+	color: black;
+	text-align: center;
+	border-radius: 50%;
+	padding: 10px 20px;
+	top: 50%;
+	font-size: 1.3em;
+	cursor: pointer;
+}
+
+/* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controller span:hover {
+	background-color: rgba(128, 128, 128, 0.11);
+}
+
+.prev {
+	left: 10px;
+	border-radius: 40%;
+}
+
+/* 이전 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+.prev:hover {
+	transform: translateX(-10px);
+}
+
+.next {
+	right: 10px;
+	border-radius: 40%;
+}
+
+/* 다음 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+.next:hover {
+	transform: translateX(10px);
+}
+
+/*  search-box */
+
+#searchbox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+
+	margin: 20px 0 60px 0;
+}
+
+h1.searchbox__title {
+	font-size: 45px;
+	margin-bottom: 15px;
+	color: rgb(243, 172, 65);
+}
+h3.searchbox__title {
+	font-size: 20px;
+	color: rgb(7, 7, 6);
+}
+.searchbox__box {
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: 100%;
+}
+.searchbox__box:hover {
+	border: 5px solid pink;
+	transition: var(--animation-duration) ease-in-out;
+}
+.searchbox__box:focus {
+	border: 5px solid pink;
+}
+
+input.bt_img {
+	background-color: pink;
+	height: 54px;
+}
+
+.searchbox__fieldset {
+	display: flex;
+	justify-content: center;
+	border: none;
+}
+
+legend {
+	width: 300px;
+	display: flex;
+	align-items: center;
+}
+
+input#keyword {
+	border: 4px soild pink;
+	width: 80%;
+	height: 54px;
+	border: 5px solid pink;
+}
+
+/* map */
+
+#map {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 50px 0 100px 0;
+}
+
+.map__box {
+	width: 600px;
+	height: 600px;
+	border: 5px solid black;
+	margin: 25px 0 50px 0;
+	border-radius: 5px;
+}
+
+/* contact  */
+
+#contact {
+	background-color: grey;
+}
+
+#contact div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.contact__title {
+	margin-bottom: -5px;
+	font-size: 30px;
+}
+h1.contact__us {
+	font-size: 27px;
+	margin-bottom: -10px;
+}
+.contact__email {
+	font-size: 25px;
+}
+.contact__rights {
+	font-size: 20px;
+	margin-top: -7px;
+}
