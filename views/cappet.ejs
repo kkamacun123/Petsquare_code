@@ -279,6 +279,33 @@
               // 검색 목록과 마커를 표출합니다
               displayPlaces(data);
 
+              
+              /* 추가-mark-1) 특정 검색 목록을 클릭시 해당 장소를 검색하는 페이지를 띄웁니다*/
+              console.log(data);
+              const $itemList = document.querySelectorAll('li.item');
+
+              for ( let i =0; i<$itemList.length; i++){
+                let eachList = $itemList[i];
+                    eachList.addEventListener('click', (e) => {
+                      console.log(e.currentTarget);
+                      let $classNum= `${e.currentTarget.firstChild.className}`
+                      let $classNumSub = $classNum.substring(16,17);
+                      /* console.log($classNumSub);
+                      console.log(e.currentTarget); */
+                      const dataID = data[`${$classNumSub}`-1].id;
+                      console.log(dataID);
+
+                      /* e.currentTarget = 클릭 이벤트의 target : <li class="item"></li> 요소 */
+                      const openUrls = 'https://map.kakao.com/?itemId='.concat(dataID);
+                      console.log(openUrls);
+                      window.open(String(openUrls));
+                    /*  window.open(String(openUrls));
+                      $openNewPage(dataID); */
+                    /* https://map.kakao.com/?itemId=18577297 */
+                    })
+              }
+
+              
               displayPagination(pagination);
               
           } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
@@ -370,7 +397,7 @@
           } else {
               itemStr += '    <span>' +  places.address_name  + '</span>'; 
           }
-                       
+
             itemStr += '  <span class="tel">' + places.phone  + '</span>' +
                       '</div>';           
       
@@ -381,8 +408,7 @@
       }
 
       
-      
-     
+
       // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
       function addMarker(position, idx, title) {
           var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
